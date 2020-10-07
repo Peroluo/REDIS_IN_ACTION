@@ -3,14 +3,16 @@ package main
 import (
 	"REDIS_IN_ACTION/initrouter"
 	"REDIS_IN_ACTION/redisclient"
+	"fmt"
 	"net/http"
 	"time"
 )
 
 func main() {
+
 	Router := initrouter.InitRouter()
 
-	_ = redisclient.InitRedis() 
+	_ = redisclient.InitRedis()
 
 	s := &http.Server{
 		Addr:           ":8888",
@@ -21,6 +23,6 @@ func main() {
 	}
 
 	time.Sleep(10 * time.Microsecond)
-	
+
 	_ = s.ListenAndServe()
 }
